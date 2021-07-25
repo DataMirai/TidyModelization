@@ -1,7 +1,7 @@
 pacman::p_load(tidyverse, broom)
 
 
-setting_n <- 5 
+setting_n <- 100
 
 # Normal samples ----
 norm_settings <- list(
@@ -52,13 +52,13 @@ pmap(args_binom, rbinom)
 # Sample generation under random distribution
 
 
-replicate(n = 10,
-          unlist( 
-            sample( 
-              list(
-                sample(pmap(args_binom, rbinom),1),
-                sample(pmap(args_exp  , rexp),1),
-                sample(pmap(args_norm , rnorm),1)),1 )),
-          simplify = FALSE )
+Example_sample<- replicate(n = 10,
+                           unlist( 
+                             sample( 
+                               list(
+                                 sample(pmap(args_binom, rbinom),1),
+                                 sample(pmap(args_exp  , rexp),1),
+                                 sample(pmap(args_norm , rnorm),1)),1 )),
+                           simplify = FALSE )
 
-
+rm(list() )
