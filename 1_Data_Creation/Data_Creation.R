@@ -1,25 +1,12 @@
+
 pacman::p_load(tidyverse, broom)
 
 
-setting_n <- 100
+n_samples   <- 50
+sample_size <- 100
 
-# Normal samples ----
-norm_settings <- list(
-  n     = as.list( rep(setting_n,setting_n)),
-  mu    = as.list( rnorm(setting_n, 100,50)),
-  sigma = as.list( abs(rnorm(setting_n, 5,10)) ) 
-)
-
-args_norm <- list(
-  mean = norm_settings$mu,
-  sd   = norm_settings$sigma, 
-  n    = norm_settings$n)
-
-normal_samples<- pmap(args_norm, rnorm)
-# extraer los elementos que compone la distribucion con map¿?
-args_norm
-normal_samples[1][2] <- args_norm$mean[1]
-normal_samples
+saveRDS(n_samples, "samples_parameters/samples_number.rds")
+saveRDS(sample_size, "samples_parameters/samples_size.rds")
 
 # Exponential samples ----
 
